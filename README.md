@@ -1,18 +1,84 @@
-# withRouter [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Do%20you%20wish%20that%20withRouter%20would%20rerender%20your%20component%20when%20your%20route%20changes?%20Now%20it%20can%20with%20the%20with-router%20NPM%20package!&url=https://github.com/CharlesStover/with-router&via=CharlesStover&hashtags=react,reactjs,javascript,webdev,webdeveloper,webdevelopment)
+📘 README.md — Proyecto de Tareas con Cámara, GPS y Mapa
+# 📱 App de Tareas con Cámara, GPS y Mapa
 
-A pub-sub alternative HOC to `react-router`'s `withRouter` HOC. It functions exactly the same way, except the wrapped component will re-render when the route changes. This is beneficial if your view changes depending on the current path.
+Esta aplicación móvil permite crear tareas con título, descripción, foto tomada desde la cámara y ubicación GPS. Las tareas se visualizan en una lista y también en un mapa interactivo. Desarrollada con **Expo**, **React Native**, **TypeScript** y **Expo Router**.
 
-[![version](https://img.shields.io/npm/v/with-router.svg)](https://www.npmjs.com/package/with-router)
-[![minified size](https://img.shields.io/bundlephobia/min/with-router.svg)](https://www.npmjs.com/package/with-router)
-[![minzipped size](https://img.shields.io/bundlephobia/minzip/with-router.svg)](https://www.npmjs.com/package/with-router)
-[![downloads](https://img.shields.io/npm/dt/with-router.svg)](https://www.npmjs.com/package/with-router)
-[![build](https://api.travis-ci.com/CharlesStover/with-router.svg)](https://travis-ci.com/CharlesStover/with-router/)
+---
 
-## Install
+## 🚀 Funcionalidades
 
-* `npm install with-router --save` or
-* `yarn add with-router`
+- Crear tareas con:
+  - Título y descripción
+  - Foto desde la cámara
+  - Ubicación GPS automática
+- Ver tareas en una lista con imagen y coordenadas
+- Ver tareas en un mapa con marcadores
+- Navegación por pestañas (Inicio, Crear Tarea, Tareas)
+- Detalle individual de cada tarea
 
-## Use
+---
 
-Use it the same way you would use `react-router`'s built-in `withRouter` HOC!
+## 📦 Tecnologías utilizadas
+
+- [Expo](https://expo.dev/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Expo Router](https://expo.github.io/router/)
+- [React Native Maps](https://github.com/react-native-maps/react-native-maps)
+- [Expo Camera](https://docs.expo.dev/versions/latest/sdk/camera/)
+- [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/)
+- [React Native Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context)
+- [Expo Vector Icons](https://docs.expo.dev/guides/icons/)
+
+---
+
+## 🛠️ Instalación y ejecución
+
+### 1. Instalar Expo CLI (si no lo tienes)
+
+npm install -g expo-cli
+
+## 2. Clonar el repositorio
+git clone https://github.com/<tu-usuario>/<nombre-del-repo>.git
+cd <nombre-del-repo>
+
+
+## 3. Instalar dependencias
+npm install
+
+
+## 4. Instalar paquetes específicos usados en el proyecto
+npx expo install expo-camera
+npx expo install expo-location
+npx expo install react-native-maps
+npx expo install @expo/vector-icons
+npx expo install react-native-safe-area-context
+npm install react-native-uuid
+
+
+## 5. Ejecutar la app
+npx expo start
+
+
+
+## 📁 Estructura del proyecto
+app/
+├── index.tsx              # Pantalla de inicio
+├── crear-tarea.tsx        # Formulario para crear tareas
+├── tareas.tsx             # Lista de tareas
+├── mapa.tsx               # Mapa con marcadores
+├── detalle-tarea/
+│   └── [id].tsx           # Detalle de tarea individual
+context/
+└── TareasContext.tsx      # Contexto global de tareas
+app/_layout.tsx            # Navegación por pestañas
+
+
+
+## 🧠 Consideraciones
+- La app solicita permisos de cámara y ubicación al crear tareas.
+- Las tareas se almacenan en memoria (no persistente).
+- El mapa solo muestra tareas que tienen coordenadas GPS válidas.
+
+## 📌 Autores
+
