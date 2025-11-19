@@ -61,20 +61,6 @@ npx expo start
 
 
 
-## 📁 Estructura del proyecto
-app/
-├── index.tsx              # Pantalla de inicio
-├── crear-tarea.tsx        # Formulario para crear tareas
-├── tareas.tsx             # Lista de tareas
-├── mapa.tsx               # Mapa con marcadores
-├── detalle-tarea/
-│   └── [id].tsx           # Detalle de tarea individual
-context/
-└── TareasContext.tsx      # Contexto global de tareas
-app/_layout.tsx            # Navegación por pestañas
-
-
-
 ## 🧠 Consideraciones
 - La app solicita permisos de cámara y ubicación al crear tareas.
 - Las tareas se almacenan en memoria (no persistente).
