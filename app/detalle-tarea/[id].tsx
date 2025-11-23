@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useTareas } from '../../context/TareasContext';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DetalleTareaScreen() {
-  const { id } = useLocalSearchParams();
+  const { id } = useLocalSearchParams<{ id: string }>();
   const { tareas } = useTareas();
 
   const tarea = tareas.find((t) => t.id === id);
@@ -17,6 +18,7 @@ export default function DetalleTareaScreen() {
   }
 
   return (
+    <SafeAreaView style={styles.safeArea}>  
     <View style={styles.container}>
       <Text style={styles.titulo}>{tarea.titulo}</Text>
       <Text style={styles.descripcion}>{tarea.descripcion}</Text>
@@ -29,10 +31,15 @@ export default function DetalleTareaScreen() {
         </Text>
       )}
     </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
   container: {
     flex: 1,
     padding: 20,

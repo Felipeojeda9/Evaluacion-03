@@ -1,6 +1,8 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from './AuthContext';
 
-type Tarea = {
+export type Tarea = {
   id: string;
   titulo: string;
   descripcion: string;
@@ -9,24 +11,57 @@ type Tarea = {
     latitud: number;
     longitud: number;
   };
+  userId: string;
 };
 
 type TareasContextType = {
   tareas: Tarea[];
-  agregarTarea: (tarea: Tarea) => void;
+  agregarTarea: (tarea: Omit<Tarea, 'userId'>) => Promise<void>;
+  eliminarTarea: (id: string) => Promise<void>;
 };
 
 const TareasContext = createContext<TareasContextType | undefined>(undefined);
 
+const TAREAS_KEY = '@tareas';
+
 export const TareasProvider = ({ children }: { children: ReactNode }) => {
   const [tareas, setTareas] = useState<Tarea[]>([]);
+  const { user } = useAuth();
 
-  const agregarTarea = (tarea: Tarea) => {
-    setTareas((prev) => [...prev, tarea]);
+  useEffect(() => {
+    const loadTareas = async () => {
+      try {
+        const raw = await AsyncStorage.getItem(TAREAS_KEY);
+        if (raw) {
+          const saved: Tarea[] = JSON.parse(raw);
+          setTareas(saved);
+        }
+      } catch (e) {
+        console.log('Error cargando tareas', e);
+      }
+    };
+    loadTareas();
+  }, []);
+
+  const guardarEnStorage = async (nuevas: Tarea[]) => {
+    setTareas(nuevas);
+    await AsyncStorage.setItem(TAREAS_KEY, JSON.stringify(nuevas));
+  };
+
+  const agregarTarea = async (tareaSinUsuario: Omit<Tarea, 'userId'>) => {
+    if (!user) return;
+    const nueva: Tarea = { ...tareaSinUsuario, userId: user.id };
+    const nuevas = [...tareas, nueva];
+    await guardarEnStorage(nuevas);
+  };
+
+  const eliminarTarea = async (id: string) => {
+    const nuevas = tareas.filter((t) => t.id !== id);
+    await guardarEnStorage(nuevas);
   };
 
   return (
-    <TareasContext.Provider value={{ tareas, agregarTarea }}>
+    <TareasContext.Provider value={{ tareas, agregarTarea, eliminarTarea }}>
       {children}
     </TareasContext.Provider>
   );
