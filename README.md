@@ -1,69 +1,45 @@
-📘 README.md — Proyecto de Tareas con Cámara, GPS y Mapa
-# 📱 App de Tareas con Cámara, GPS y Mapa
-
-Esta aplicación móvil permite crear tareas con título, descripción, foto tomada desde la cámara y ubicación GPS. Las tareas se visualizan en una lista y también en un mapa interactivo. Desarrollada con **Expo**, **React Native**, **TypeScript** y **Expo Router**.
-
----
-
-## 🚀 Funcionalidades
-
-- Crear tareas con:
-  - Título y descripción
-  - Foto desde la cámara
-  - Ubicación GPS automática
-- Ver tareas en una lista con imagen y coordenadas
-- Ver tareas en un mapa con marcadores
-- Navegación por pestañas (Inicio, Crear Tarea, Tareas)
-- Detalle individual de cada tarea
-
----
-
-## 📦 Tecnologías utilizadas
-
-- [Expo](https://expo.dev/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Expo Router](https://expo.github.io/router/)
-- [React Native Maps](https://github.com/react-native-maps/react-native-maps)
-- [Expo Camera](https://docs.expo.dev/versions/latest/sdk/camera/)
-- [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/)
-- [React Native Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context)
-- [Expo Vector Icons](https://docs.expo.dev/guides/icons/)
-
----
-
-## 🛠️ Instalación y ejecución
-
-### 1. Instalar Expo CLI (si no lo tienes)
-
-npm install -g expo-cli
-
-## 2. Clonar el repositorio
-git clone https://github.com/<tu-usuario>/<nombre-del-repo>.git
-cd <nombre-del-repo>
+# '########:'##::::'##::::'###:::::::::::::::'#####::::'#######::::::::::::::'###::::'########::'########::
+ ##.....:: ##:::: ##:::'## ##:::::::::::::'##.. ##::'##.... ##::::::::::::'## ##::: ##.... ##: ##.... ##:
+ ##::::::: ##:::: ##::'##:. ##:::::::::::'##:::: ##:..::::: ##:::::::::::'##:. ##:: ##:::: ##: ##:::: ##:
+ ######::: ##:::: ##:'##:::. ##:'#######: ##:::: ##::'#######::'#######:'##:::. ##: ########:: ########::
+ ##...::::. ##:: ##:: #########:........: ##:::: ##::...... ##:........: #########: ##.....::: ##.....:::
+ ##::::::::. ## ##::: ##.... ##::::::::::. ##:: ##::'##:::: ##:::::::::: ##.... ##: ##:::::::: ##::::::::
+ ########:::. ###:::: ##:::: ##:::::::::::. #####:::. #######::::::::::: ##:::: ##: ##:::::::: ##::::::::
+........:::::...:::::..:::::..:::::::::::::.....:::::.......::::::::::::..:::::..::..:::::::::..:::::::::
 
 
-## 3. Instalar dependencias
-npm install
+Aplicación móvil de tareas desarrollada con React Native y Expo.
 
+## stack
+- react native
+- expo
+- typescript
+- context api
+- asyncstorage
+- jwt
+- fetch api
 
-### 4. Instalar paquetes específicos usados en el proyecto
+## features
+- login con token
+- persistencia de sesión
+- listar tareas
+- crear tareas
+- eliminar / completar tareas
+- mapa con tareas geolocalizadas
 
-1. `npx expo install expo-camera`
-2. `npx expo install expo-location`
-3. `npx expo install react-native-maps`
-4. `npx expo install @expo/vector-icons`
-5. `npx expo install react-native-safe-area-context`
-6. `npm install react-native-uuid`
-
-## 5. Ejecutar la app
+## run
+npm install  
 npx expo start
 
+## auth
+- autenticación vía jwt
+- token almacenado en asyncstorage
+- peticiones protegidas con bearer token
 
-## 🧠 Consideraciones
-- La app solicita permisos de cámara y ubicación al crear tareas.
-- Las tareas se almacenan en memoria (no persistente).
-- El mapa solo muestra tareas que tienen coordenadas GPS válidas.
+## notes
+- requiere api activa para gestión de tareas
+- arquitectura separada por context / services
 
-## 📌 Autores
+## author
+Felipe Ojeda / Benjamin Arias Pavez / Angelica Toledo Vera
 
